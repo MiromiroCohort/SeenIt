@@ -76,6 +76,16 @@ class SeenItController
       movie_to_remove = Movie.find_by(id: remove_movie)
       movie_to_remove.destroy
       @command = @seen_it_view.menu
+    when "C"
+      movies = Movie.all
+      @seen_it_view.display_heading("All films:")
+      movies.each do |movie|
+        @seen_it_view.display(movie)
+      end
+      movie_to_update = gets.chomp.to_i
+      movie = Movie.find_by(id: movie_to_update)
+      movie[status: true]
+      movie.save
     else
 
       @command = @seen_it_view.menu
