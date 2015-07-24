@@ -5,18 +5,18 @@ class SeenItView
 		system 'cls'
 		system 'clear'
 		puts "
-                          ``                         
-                    `+#@@@@@@@+;                    
-               `'@@@@@@@@@@@@@@@@@@+,               
-             :@@@@@@@@@@@+;@@@@@@@@@@@@             
-             @@@@@@@#;        .'#@@@@@@;            
-             @@@:`                 `#@@@            
-           .'@@@                     @@@,`          
-       ##@@@@@@#                     @@@@@@@#,      
-       @@@@@@@@`     ,@@@      ###+  '@@@@@@@@      
-      ,@@@@@:       @@@@@      @@@@    `'@@@@@      
-      @@@,        ;@@@@@@      @@@@        @@@:     
- `'@@@@@@        :@@@@@@:      @@@@        ;@@@@@@: 
+                          ``
+                    `+#@@@@@@@+;
+               `'@@@@@@@@@@@@@@@@@@+,
+             :@@@@@@@@@@@+;@@@@@@@@@@@@
+             @@@@@@@#;        .'#@@@@@@;
+             @@@:`                 `#@@@
+           .'@@@                     @@@,`
+       ##@@@@@@#                     @@@@@@@#,
+       @@@@@@@@`     ,@@@      ###+  '@@@@@@@@
+      ,@@@@@:       @@@@@      @@@@    `'@@@@@
+      @@@,        ;@@@@@@      @@@@        @@@:
+ `'@@@@@@        :@@@@@@:      @@@@        ;@@@@@@:
  @@@@@@@@        @@@@@@,       @@@@         @@@@@@@@
  @@@@@@#        +@@@@@         @@@@         `#@@@@@@
  @@@            @@@@@          @@@@             .@@@
@@ -25,44 +25,44 @@ class SeenItView
  @@@            @@@@'          @@@@             @@@;
  @@@.           @@@@@          @@@@             @@@:
  #@@'           @@@@@          @@@@             @@@.
- ;@@@           .@@@@@         @@@@             @@@ 
- .@@@            @@@@@#        @@@@            `@@@ 
-  @@@            `@@@@@#       @@@@            ;@@@ 
-  @@@:            #@@@@@:      @@@@            @@@: 
-  +@@@             @@@@@@      @@@@            @@@  
-   @@@              @@@@@@     @@@@           :@@@  
-   @@@'              @@@@@,    @@@@           @@@'  
-   +@@@               @@@@@    @@@@          `@@@   
-    @@@,              @@@@@    @@@@          @@@@   
-    #@@@              ,@@@@#   @@@@          @@@`   
-     @@@,              @@@@@   @@@@         @@@@    
-     #@@@              @@@@@   @@@@        `@@@.    
-      @@@'             @@@@@   @@@@        @@@@     
-      +@@@            .@@@@#   @@@@       '@@@      
-       @@@@           @@@@@    @@@@       @@@+      
-       :@@@'         ;@@@@@    @@@@      @@@@       
-        @@@@.       ,@@@@@.    @@@@     #@@@`       
-         @@@@      #@@@@@#     @@@@    :@@@'        
-         `@@@@   '@@@@@@#      @@@@   `@@@@         
-          ;@@@@`````````       ````   @@@@          
-           #@@@@                     @@@@           
-            @@@@#                   @@@@`           
-             @@@@#                 @@@@,            
-              @@@@@               @@@@.             
-               @@@@@            .@@@@,              
-                @@@@@          ;@@@@`               
-                 '@@@@'       @@@@@                 
-                 `,@@@@@    ;@@@@@                  
-                    @@@@@#:@@@@@:                   
-                     '@@@@@@@@@                     
-                       @@@@@@,                      
+ ;@@@           .@@@@@         @@@@             @@@
+ .@@@            @@@@@#        @@@@            `@@@
+  @@@            `@@@@@#       @@@@            ;@@@
+  @@@:            #@@@@@:      @@@@            @@@:
+  +@@@             @@@@@@      @@@@            @@@
+   @@@              @@@@@@     @@@@           :@@@
+   @@@'              @@@@@,    @@@@           @@@'
+   +@@@               @@@@@    @@@@          `@@@
+    @@@,              @@@@@    @@@@          @@@@
+    #@@@              ,@@@@#   @@@@          @@@`
+     @@@,              @@@@@   @@@@         @@@@
+     #@@@              @@@@@   @@@@        `@@@.
+      @@@'             @@@@@   @@@@        @@@@
+      +@@@            .@@@@#   @@@@       '@@@
+       @@@@           @@@@@    @@@@       @@@+
+       :@@@'         ;@@@@@    @@@@      @@@@
+        @@@@.       ,@@@@@.    @@@@     #@@@`
+         @@@@      #@@@@@#     @@@@    :@@@'
+         `@@@@   '@@@@@@#      @@@@   `@@@@
+          ;@@@@`````````       ````   @@@@
+           #@@@@                     @@@@
+            @@@@#                   @@@@`
+             @@@@#                 @@@@,
+              @@@@@               @@@@.
+               @@@@@            .@@@@,
+                @@@@@          ;@@@@`
+                 '@@@@'       @@@@@
+                 `,@@@@@    ;@@@@@
+                    @@@@@#:@@@@@:
+                     '@@@@@@@@@
+                       @@@@@@,
                          #@;                        "
-		sleep(2)
+		sleep(10)
+    system 'cls'
+    system 'clear'
 	end
 
 	def menu
-		system 'cls'
-		system 'clear'
 		puts "+" + "-"*80 + "+"
 		puts "|" + " "*80 + "|"
 		puts "|" + " Welcome to your SeenIt database!".ljust(80) + "|"
@@ -74,9 +74,12 @@ class SeenItView
 		puts "|" + "  * [G]: Display by genre".ljust(80) + "|"
 		puts "|" + "  * [A]: Add new film".ljust(80) + "|"
 		puts "|" + "  * [R]: Remove film".ljust(80) + "|"
+    puts "|" + "  * [X]: Exit SeenIt".ljust(80) + "|"
 		puts "|" + " "*80 + "|"
 		puts "+" + "-"*80 + "+"
 		return gets.chomp
+    system 'cls'
+    system 'clear'
 	end
 
   def display_heading_detailing
@@ -84,11 +87,11 @@ class SeenItView
 		puts "|" + " "*80 + "|"
 	end
 
-	def display_heading(title_word)
+	def display_heading(title)
 		system 'cls'
 		system 'clear'
 		display_heading_detailing
-		puts "|" + " #{title_word} films:".ljust(80) + "|"
+		puts "|" + " #{title}".ljust(80) + "|"
 		puts "|" + " "*80 + "|"
 	end
 
@@ -97,6 +100,10 @@ class SeenItView
 		puts "|" + "   ID#: #{info_hash[:id]}     Rating: #{info_hash[:imdb_rating]}/10     Release year: #{info_hash[:year]}".ljust(80) + "|"
 	  puts "|" + " "*80 + "|"
 	end
+
+  def display_genre(genre)
+    puts "|" + "  #{genre[:id]} = #{genre[:name]}".ljust(80) + "|"
+  end
 
 	def display_footer
 		puts "|" + " "*80 + "|"
@@ -116,13 +123,14 @@ class SeenItView
 		puts "|" + " "*80 + "|"
 		puts "|" + " Please enter the film's IMDb rating:".ljust(80) + "|"
 		film_details << gets.chomp
+    # puts "|" + " "*80 + "|"
+    # puts "|" + " Please enter the film's genre:".ljust(80) + "|"
+    # film_details << gets.chomp
 		display_footer
 		return film_details
 	end
 
 	def remove
-		system 'cls'
-		system 'clear'
 		display_heading_detailing
 		puts "|" + " Please enter the ID# of the film you'd like to delete:".ljust(80) + "|"
 		display_footer
@@ -140,6 +148,6 @@ hi = SeenItView.new
 
 # hi.remove
 
-hi.add
+# hi.add
 
 # puts "The lord of the rings: the return of the king".length

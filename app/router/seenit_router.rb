@@ -1,4 +1,5 @@
-
+require_relative "../controllers/seenit_controller.rb"
+require_relative "../controllers/seenit_view.rb"
 
 command = ARGV.shift
 

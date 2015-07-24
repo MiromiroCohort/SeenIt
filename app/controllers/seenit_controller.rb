@@ -1,5 +1,7 @@
-require_relative "../views/seen_it_view.rb"
-
+require_relative "seenit_view.rb"
+require_relative "../models/movie.rb"
+require_relative "../models/genre.rb"
+require_relative "../models/movie_genres.rb"
 
 class SeenItController
   def initialize
@@ -8,63 +10,78 @@ class SeenItController
 
   def run
     @seen_it_view.welcome
-    command = @seen_it_view.menu
-  end
+    @command = @seen_it_view.menu
 
-  case command
+  while @command != "X"
+    case @command
     when "D"
       movies = Movie.all
-      @seen_it_view.display_heading("All")
+      @seen_it_view.display_heading("All films:")
       movies.each do |movie|
         @seen_it_view.display(movie)
       end
-      @seen_it_view.menu
-        # @seen_it_view.display_all
+      @command = @seen_it_view.menu
     when "S"
       movies = Movie.all
-      @seen_it_view.display_heading("Seen")
+      @seen_it_view.display_heading("Seen films:")
       movies.each do |movie|
         if movie.status == true
           @seen_it_view.display(movie)
         end
       end
       @seen_it_view.display_footer
-      @seen_it_view.menu
+      @command = @seen_it_view.menu
     when "U"
       movies = Movie.all
-      @seen_it_view.display_heading("Unseen")
+      @seen_it_view.display_heading("Unseen films:")
       movies.each do |movie|
         if movie.status == false
           @seen_it_view.display(movie)
         end
       end
       @seen_it_view.display_footer
-      @seen_it_view.menu
-    # print the list of unseen movies
+      @command = @seen_it_view.menu
     when "G"
-
-      @seen_it_view.display_genre
-      @seen_it_view.menu
-    # remove the movie from the Database
+      @seen_it_view.display_heading("Genres:")
+      Genre.all.each do |genre|
+        @seen_it_view.display_genre(genre)
+      end
+      @seen_it_view.display_footer
+      genre_choice = gets.chomp.to_i
+      movie_ids = []
+      MovieGenres.all.each do |item|
+        if item[:genre_id] == genre_choice
+          movie_ids << item[:movie_id]
+        end
+      end
+      @seen_it_view.display_heading("Movies of selected genre:")
+      Movie.all.each do |movie|
+        if movie_ids.include?(movie[:id])
+          @seen_it_view.display(movie)
+        end
+      end
+      @seen_it_view.display_footer
+      @command = @seen_it_view.menu
     when "A"
       title = @seen_it_view.add
-
-      Movie.create(title: title[0], year: title[1], imdb_rating: title[2], status: false) # What about timestamps??
-      @seen_it_view.menu
-    # Need to think about genre year etc....
-    # ask the user for input via the views
-    # add the input to the Database
+      movie = Movie.create(title: title[0], year: title[1], imdb_rating: title[2], status: false)
+      @command = @seen_it_view.menu
     when "R"
+      movies = Movie.all
+      @seen_it_view.display_heading("All films:")
+      movies.each do |movie|
+        @seen_it_view.display(movie)
+      end
       remove_movie = @seen_it_view.remove
       movie_to_remove = Movie.find_by(id: remove_movie)
       movie_to_remove.destroy
-      @seen_it_view.menu
-    when "exit"
-
-    # exit the program
+      @command = @seen_it_view.menu
     else
-      # not sure
+
+      @command = @seen_it_view.menu
     end
+   end
+  end
 
 end
 
