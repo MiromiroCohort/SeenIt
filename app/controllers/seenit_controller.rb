@@ -85,7 +85,7 @@ class SeenItController
       @seen_it_view.display_footer
       movie_to_update = gets.chomp.to_i
       movie = Movie.find_by(id: movie_to_update)
-      movie[status: true]
+      puts movie[:status] = true
       movie.save
       @command = @seen_it_view.menu
     else
