@@ -74,7 +74,8 @@ class SeenItView
 		puts "|" + "  * [G]: Display by genre".ljust(80) + "|"
 		puts "|" + "  * [A]: Add new film".ljust(80) + "|"
 		puts "|" + "  * [R]: Remove film".ljust(80) + "|"
-    puts "|" + "  * [X]: Exit SeenIt".ljust(80) + "|"
+		puts "|" + "  * [C]: Change seen status".ljust(80) + "|"
+    		puts "|" + "  * [X]: Exit SeenIt".ljust(80) + "|"
 		puts "|" + " "*80 + "|"
 		puts "+" + "-"*80 + "+"
 		return gets.chomp
