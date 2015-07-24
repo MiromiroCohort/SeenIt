@@ -86,6 +86,8 @@ class SeenItController
       movie = Movie.find_by(id: movie_to_update)
       movie[status: true]
       movie.save
+      @seen_it_view.display_footer
+      @command = @seen_it_view.menu
     else
 
       @command = @seen_it_view.menu
